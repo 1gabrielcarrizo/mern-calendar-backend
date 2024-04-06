@@ -27,6 +27,11 @@ app.use('/api/auth', require('./routes/auth'));
 // CRUD: Eventos
 app.use('/api/events', require('./routes/events'))
 
+// solucion al recargar la pagina
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html')
+})
+
 // 4- escuchar peticiones
 app.listen(process.env.PORT, () => {
     console.log(`Servidor corriendo en el puerto ${process.env.PORT}`)
